@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class KratosController : MonoBehaviour
 {
-    public float movementSpeed;
-    public float sensitivity = 0.2f;
+    public float movementSpeed = 0.1f;
+    public float sensitivityX = 20f;
+    public float sensitivityY = 1;
     public Camera cam;
 
     // Use this for initialization
     void Start()
-    {
-        movementSpeed = 0.1f;
-    }
+    { }
 
     // Update is called once per frame
     void Update()
     {
 		//Forward motion
-        transform.Translate(0, 0, -Input.GetAxis("Vertical") * movementSpeed);
+        transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * -1);
 		//Horizontal rotation
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * 20.0f, 0.0f);
+        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
 		//Vertical camera rotation
-        cam.transform.Rotate(-Input.GetAxis("Mouse Y"), 0.0f, 0.0f);
+        cam.transform.Rotate(Input.GetAxis("Mouse Y") * sensitivityY * -1, 0.0f, 0.0f);
         if (cam.transform.eulerAngles.x >= 35.0f && cam.transform.eulerAngles.x <= 300.0f)
         {
             cam.transform.eulerAngles = new Vector3(

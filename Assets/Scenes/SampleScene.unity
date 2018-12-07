@@ -147,7 +147,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.595
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -249,13 +249,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0.999912, z: -0.013264088, w: 0}
-  m_LocalPosition: {x: 0, y: 2.9, z: 5.2}
+  m_LocalRotation: {x: -0, y: 0.99261034, z: -0.12134579, w: -0}
+  m_LocalPosition: {x: 0, y: 2.61, z: 4.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 985262485}
   m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 1.52, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.940001, y: 180.00002, z: 0}
 --- !u!1 &985262484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 612e175d66a14435c9cf4571a03b920c,
@@ -277,10 +277,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a47cb4b656f544f95275bb556225d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  sensitivity: 0.2
+  movementSpeed: 0.4
+  sensitivityX: 3.37
+  sensitivityY: 0.6
   cam: {fileID: 534669904}
-  sensitivityY: 1.5
+--- !u!54 &985262487
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985262484}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!65 &985262488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985262484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 2.21, z: 1}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1001 &1205971188
 Prefab:
   m_ObjectHideFlags: 0
@@ -338,6 +365,7 @@ GameObject:
   - component: {fileID: 1461490141}
   - component: {fileID: 1461490140}
   - component: {fileID: 1461490139}
+  - component: {fileID: 1461490143}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -408,9 +436,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1461490138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -0.03, z: -2.8537061}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.49, y: -0.03, z: -2.8537}
+  m_LocalScale: {x: 3.6568, y: 1, z: 4.7677}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1461490143
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1461490138}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
