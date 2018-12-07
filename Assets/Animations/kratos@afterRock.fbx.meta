@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: efe2339c1db0543798d0cbde8bfb03e3
+guid: 208bb18831f3044c8930a97ad8baaa71
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -258,12 +258,7 @@ ModelImporter:
     13700054: Object006
     13700056: Object007
     13700058: Object012
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: c37c936f713ff491693ff169af124624, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
