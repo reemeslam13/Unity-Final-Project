@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class KratosController : MonoBehaviour
 {
-    public float movementSpeed = 0.1f;
+    public static float movementSpeed = 0.1f;
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
 
     // Use this for initialization
     void Start()
-    { }
+    {
+    }
 
     // Update is called once per frame
     void Update()
     {
-		//Forward motion
-        transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * -1);
-		//Horizontal rotation
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
-		//Vertical camera rotation
+        //Forward motion
+        if(!MariaController.isAttacking){
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed);
+            //Horizontal rotation
+            transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
+        }
+        //Vertical camera rotation
         cam.transform.Rotate(Input.GetAxis("Mouse Y") * sensitivityY * -1, 0.0f, 0.0f);
         if (cam.transform.eulerAngles.x >= 35.0f && cam.transform.eulerAngles.x <= 300.0f)
         {
