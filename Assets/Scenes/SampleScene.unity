@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -131,6 +131,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   animator: {fileID: 0}
+--- !u!114 &28511817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28511814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31493b2afc4e9cf44aafa20082d85e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 0
+  maxHealthPoints: 0
+  attackDamage: 0
+  fury: 0
+  maxFury: 0
+  level: 0
+  experience: 0
+  skillPoints: 0
+  upgrades: 
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +234,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44, y: 1.93, z: 0.66}
   m_Center: {x: 0, y: 0.03, z: 0}
+--- !u!114 &231616231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231616225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efa9a716e0e94890b6b1246a577f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  health: 0
+  player: {fileID: 28511814}
 --- !u!4 &465290753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400078, guid: bf6d0706c6c35f14ba2f7fbb68ecaf69,
@@ -307,7 +341,6 @@ GameObject:
   - component: {fileID: 899710546}
   - component: {fileID: 899710545}
   - component: {fileID: 899710548}
-  - component: {fileID: 899710549}
   m_Layer: 0
   m_Name: Kratos
   m_TagString: Untagged
@@ -326,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a47cb4b656f544f95275bb556225d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivityX: 7.99
+  sensitivityX: 1.3
   sensitivityY: 0.3
   cam: {fileID: 534669904}
 --- !u!54 &899710546
@@ -351,7 +384,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899710544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalPosition: {x: 0, y: 1.17, z: -14.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
@@ -371,26 +404,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44, y: 2.39, z: 0.48}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &899710549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 899710544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31493b2afc4e9cf44aafa20082d85e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 0
-  maxHealthPoints: 0
-  attackDamage: 0
-  fury: 0
-  maxFury: 0
-  level: 0
-  experience: 0
-  skillPoints: 0
-  upgrades: 
 --- !u!1 &985262484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 612e175d66a14435c9cf4571a03b920c,
@@ -607,7 +620,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4188204383193610, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -13.61
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: 4188204383193610, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
       propertyPath: m_LocalRotation.x
@@ -716,6 +729,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: bf6d0706c6c35f14ba2f7fbb68ecaf69, type: 3}
+      propertyPath: m_Name
+      value: Maria
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf6d0706c6c35f14ba2f7fbb68ecaf69, type: 3}
   m_IsPrefabAsset: 0
@@ -735,7 +752,7 @@ GameObject:
   - component: {fileID: 1851861481}
   m_Layer: 0
   m_Name: SwordParent
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

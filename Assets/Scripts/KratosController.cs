@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KratosController : MonoBehaviour
 {
-    public static float movementSpeed = 0.1f;
+    public static float movementSpeed = 0.05f;
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
@@ -12,14 +12,16 @@ public class KratosController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Forward motion
         if(!MariaController.isAttacking){
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed);
+            int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
+			//Forward motion
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
             //Horizontal rotation
             transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
         }

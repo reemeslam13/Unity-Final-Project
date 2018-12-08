@@ -20,14 +20,19 @@ public class MariaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
-            animator.SetTrigger("attack");
+            state = 3;
+            animator.SetTrigger("heavyAttack");
 			isAttacking = true;
-
+        } else if (Input.GetMouseButtonDown(0)){
+            state = 4;
+            animator.SetTrigger("lightAttack");
+            isAttacking = true;
         }
 		if (Input.GetAxis("Vertical") != 0)
         {
+            //Running
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 state = 2;
@@ -35,12 +40,14 @@ public class MariaController : MonoBehaviour
             }
             else
             {
+                //Walking
                 state = 1;
                 animator.SetInteger("state", 1);
             }
         }
         else
         {
+            //Idle
             state = 0;
             animator.SetInteger("state", 0);
         }
