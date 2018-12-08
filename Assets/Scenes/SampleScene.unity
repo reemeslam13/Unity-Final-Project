@@ -450,6 +450,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.66, y: 2.21, z: 1}
   m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!1 &1001014648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1995371735822918, guid: 892d9702a9d8b3444b82aab0d9014586,
+    type: 2}
+  m_PrefabInternal: {fileID: 1592874593}
+--- !u!65 &1001014650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1001014648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.19, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1098100598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1118612821263954, guid: 892d9702a9d8b3444b82aab0d9014586,
+    type: 2}
+  m_PrefabInternal: {fileID: 1592874593}
+--- !u!65 &1098100600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098100598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.19, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1205971188
 Prefab:
   m_ObjectHideFlags: 0
@@ -670,6 +704,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5839b3d44f679e644b3cef6e0994210b, type: 2}
+    - target: {fileID: 1118612821263954, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
+      propertyPath: m_TagString
+      value: enemyHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995371735822918, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
+      propertyPath: m_TagString
+      value: enemyHand
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 136115232221231750, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 892d9702a9d8b3444b82aab0d9014586, type: 2}
