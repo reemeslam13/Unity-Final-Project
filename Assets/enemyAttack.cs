@@ -10,7 +10,7 @@ public class enemyAttack : StateMachineBehaviour {
 	//}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//
 	//}
 
@@ -18,6 +18,7 @@ public class enemyAttack : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         GameObject parent = animator.gameObject.transform.parent.gameObject;
         parent.GetComponent<VampireController>().isAttacking = false;
+        Debug.Log("Not Attacking Anymore");
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

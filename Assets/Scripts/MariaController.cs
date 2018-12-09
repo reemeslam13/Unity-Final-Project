@@ -5,7 +5,8 @@ using UnityEngine;
 public class MariaController : MonoBehaviour
 {
     public int state;
-    public static bool isAttacking;
+    public static bool mariaAttacking;
+    public static bool beingHit;
     public Animator animator;
 
     // Use this for initialization
@@ -14,7 +15,8 @@ public class MariaController : MonoBehaviour
         animator = GetComponent<Animator>();
         state = 0;
         animator.SetInteger("state", 0);
-        isAttacking = false;
+        mariaAttacking = false;
+        beingHit = false;
     }
 
     // Update is called once per frame
@@ -24,11 +26,11 @@ public class MariaController : MonoBehaviour
         {
             state = 3;
             animator.SetTrigger("heavyAttack");
-			isAttacking = true;
+			mariaAttacking = true;
         } else if (Input.GetMouseButtonDown(0)){
             state = 4;
             animator.SetTrigger("lightAttack");
-            isAttacking = true;
+            mariaAttacking = true;
         }
 		if (Input.GetAxis("Vertical") != 0)
         {

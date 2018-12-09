@@ -19,7 +19,7 @@ public class attackBehavior : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         animator.ResetTrigger("heavyAttack");
         animator.ResetTrigger("lightAttack");
-		MariaController.isAttacking = false;
+		MariaController.mariaAttacking = false;
         VampireController.hit = false;
 	}
 

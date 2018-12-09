@@ -18,7 +18,7 @@ public class KratosController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!MariaController.isAttacking){
+        if(!MariaController.mariaAttacking && !MariaController.beingHit){
             int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
 			//Forward motion
             transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
@@ -42,6 +42,17 @@ public class KratosController : MonoBehaviour
             cam.transform.eulerAngles.y,
             cam.transform.eulerAngles.z
         );
+        }
+    }
+
+    void OnTriggerEnter(Collider col){
+        //print();
+        if(col.tag == "enemyHand"){
+			bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking;
+            if(gettingAttacked){
+				MariaController.beingHit = true;
+				GetComponentInChildren<Animator>().SetTrigger("hit");
+            }
         }
     }
 }

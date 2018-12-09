@@ -8,6 +8,7 @@ public class VampireController : MonoBehaviour {
     public GameObject player;
     NavMeshAgent agent;
     public bool isAttacking;
+    public bool isBeingHit;
     Vector3 startLocation;
     public GameObject enemy;
     Animator anim;
@@ -19,6 +20,7 @@ public class VampireController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         isAttacking = false;
+        isBeingHit = false;
         dead = false;
         agent = GetComponent<NavMeshAgent>();
         target = player.transform;
@@ -36,8 +38,9 @@ public class VampireController : MonoBehaviour {
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isIdle", false);
 
-                if (distance<= agent.stoppingDistance){
+                if (distance <= agent.stoppingDistance){
                     //Attack target
+                    print("ATTACKING!!!");
                     isAttacking = true;
                     GetComponentInChildren<Animator>().SetTrigger("attack");
                     //Face the target

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kratos : MonoBehaviour
+public class Kratos : MonoBehaviour
 {
     public int healthPoints;
     public int maxHealthPoints;

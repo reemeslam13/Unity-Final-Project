@@ -20,9 +20,9 @@ public class EnemyLogic : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider col){
-        if(col.tag == "sword" && MariaController.isAttacking && !VampireController.hit){
+        if(col.tag == "sword" && MariaController.mariaAttacking && !VampireController.hit){
 			VampireController.hit = true;
-            int damage = player.GetComponent<kratos>().attackDamage;
+            int damage = player.GetComponent<Kratos>().attackDamage;
             health -= damage;
             print("Enemy HP: " + health + " / " + maxHealth);
             if(health <= 0){
