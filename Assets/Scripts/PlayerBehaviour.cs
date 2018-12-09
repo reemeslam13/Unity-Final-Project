@@ -8,11 +8,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
+    public GameObject maria;
 
     // Use this for initialization
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -50,7 +50,9 @@ public class PlayerBehaviour : MonoBehaviour
         if(col.tag == "enemyHand"){
 			bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking;
             if(gettingAttacked){
+                gameObject.GetComponentInChildren<Player>().healthPoints -= col.gameObject.GetComponentInParent<EnemyLogic>().attackDamage;
 				MariaController.beingHit = true;
+                Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
 				GetComponentInChildren<Animator>().SetTrigger("hit");
             }
         }
