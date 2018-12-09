@@ -26,6 +26,7 @@ public class enemyGettingHit: StateMachineBehaviour {
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         animator.gameObject.GetComponentInParent<VampireController>().isBeingHit = false;
+        animator.gameObject.transform.parent.GetComponent<VampireController>().canAttack = true;
         if (enterOrExit == 1)
         {
             animator.ResetTrigger(triggerToReset);

@@ -18,6 +18,7 @@ public class enemyAttack : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         GameObject parent = animator.gameObject.transform.parent.gameObject;
         parent.GetComponent<VampireController>().isAttacking = false;
+        parent.GetComponent<VampireController>().InvokeCanAttack(3f);
         Debug.Log("Not Attacking Anymore");
 	}
 

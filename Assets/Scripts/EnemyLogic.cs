@@ -7,6 +7,7 @@ public class EnemyLogic : MonoBehaviour {
     public int maxHealth = 50;
     public int health;
     public GameObject player;
+    public int attackDamage = 10;
     
 
 	// Use this for initialization
@@ -22,7 +23,7 @@ public class EnemyLogic : MonoBehaviour {
     void OnTriggerEnter(Collider col){
         if(col.tag == "sword" && MariaController.mariaAttacking && !VampireController.hit){
 			VampireController.hit = true;
-            int damage = player.GetComponent<Kratos>().attackDamage;
+            int damage = player.GetComponent<Player>().attackDamage * player.GetComponentInChildren<MariaController>().attackType;
             health -= damage;
             print("Enemy HP: " + health + " / " + maxHealth);
             if(health <= 0){

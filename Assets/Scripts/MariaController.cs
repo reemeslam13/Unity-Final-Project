@@ -8,6 +8,9 @@ public class MariaController : MonoBehaviour
     public static bool mariaAttacking;
     public static bool beingHit;
     public Animator animator;
+    public byte LIGHT_ATTACK = 1;
+    public byte HEAVY_ATTACK = 3;
+    public byte attackType; 
 
     // Use this for initialization
     void Start()
@@ -25,10 +28,12 @@ public class MariaController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             state = 3;
+            attackType = HEAVY_ATTACK;
             animator.SetTrigger("heavyAttack");
 			mariaAttacking = true;
         } else if (Input.GetMouseButtonDown(0)){
             state = 4;
+            attackType = LIGHT_ATTACK;
             animator.SetTrigger("lightAttack");
             mariaAttacking = true;
         }

@@ -15,10 +15,13 @@ public class VampireController : MonoBehaviour {
     public static bool dead;
     public static bool hit = false;
 
+    public bool canAttack;
+
     private Transform target;
 
 	// Use this for initialization
 	void Start () {
+        canAttack = true;
         isAttacking = false;
         isBeingHit = false;
         dead = false;
@@ -40,9 +43,8 @@ public class VampireController : MonoBehaviour {
 
                 if (distance <= agent.stoppingDistance){
                     //Attack target
-                    print("ATTACKING!!!");
-                    isAttacking = true;
-                    GetComponentInChildren<Animator>().SetTrigger("attack");
+                    if(canAttack)
+                        attack();
                     //Face the target
                     FaceTarget();
                 }
@@ -50,10 +52,6 @@ public class VampireController : MonoBehaviour {
             else{
                 agent.SetDestination(startLocation);
             }
-
-          // if(Vector3.Distance(transform.position,startLocation)< startLocation.magnitude ){
-
-            //}
 
             if (!agent.pathPending)
             {
@@ -67,6 +65,20 @@ public class VampireController : MonoBehaviour {
                 }
             }
 		}
+    }
+
+    void attack(){
+        canAttack = false;
+        isAttacking = true;
+        GetComponentInChildren<Animator>().SetTrigger("attack");
+    }
+
+    public void InvokeCanAttack(float time){
+        Invoke("canAttackTrue", time);
+    }
+
+    void canAttackTrue(){
+        canAttack = true;
     }
 
     void FaceTarget(){

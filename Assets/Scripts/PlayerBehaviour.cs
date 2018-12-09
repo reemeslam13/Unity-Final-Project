@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KratosController : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     public static float movementSpeed = 0.05f;
     public float sensitivityX = 20f;

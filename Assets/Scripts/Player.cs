@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kratos : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public int healthPoints;
     public int maxHealthPoints;
@@ -36,7 +36,7 @@ public class Kratos : MonoBehaviour
         upgrades[level-2] = type;
         switch(type){
             case 0: maxHealthPoints = (int)(1.1 * maxHealthPoints); healthPoints = maxHealthPoints; break;
-            case 1: KratosController.movementSpeed *= 1.1f; break;
+            case 1: PlayerBehaviour.movementSpeed *= 1.1f; break;
             case 2: attackDamage = (int)(1.1 * attackDamage); break;
         }
     }
