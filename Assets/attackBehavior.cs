@@ -7,8 +7,9 @@ public class attackBehavior : StateMachineBehaviour {
     public GameObject enemyAnimator;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	}
+	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //    
+	//}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -20,7 +21,6 @@ public class attackBehavior : StateMachineBehaviour {
         animator.ResetTrigger("heavyAttack");
         animator.ResetTrigger("lightAttack");
 		MariaController.mariaAttacking = false;
-        VampireController.hit = false;
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

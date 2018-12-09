@@ -8,17 +8,21 @@ public class PlayerBehaviour : MonoBehaviour
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
+    public int jumps;
     public GameObject maria;
+    public bool dead;
 
     // Use this for initialization
     void Start()
     {
+        jumps = 2;
+        dead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!MariaController.mariaAttacking && !MariaController.beingHit){
+        if(!MariaController.mariaAttacking && !MariaController.beingHit && !dead){
             int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
 			//Forward motion
             transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
@@ -36,25 +40,47 @@ public class PlayerBehaviour : MonoBehaviour
         );
         }
         else if (cam.transform.eulerAngles.x >= 300.0f)
-        {
-            cam.transform.eulerAngles = new Vector3(
-            0.0f,
-            cam.transform.eulerAngles.y,
-            cam.transform.eulerAngles.z
-        );
+            {
+                cam.transform.eulerAngles = new Vector3(
+                0.0f,
+                cam.transform.eulerAngles.y,
+                cam.transform.eulerAngles.z
+            );
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && !dead){
+            if(jumps > 0){
+                GetComponentInChildren<Animator>().SetTrigger("jump");
+                jumps--;
+                GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
+            }
         }
     }
 
     void OnTriggerEnter(Collider col){
         //print();
         if(col.tag == "enemyHand"){
-			bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking;
+            bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking && !Input.GetKey(KeyCode.LeftControl);
             if(gettingAttacked){
                 gameObject.GetComponentInChildren<Player>().healthPoints -= col.gameObject.GetComponentInParent<EnemyLogic>().attackDamage;
 				MariaController.beingHit = true;
                 Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
-				GetComponentInChildren<Animator>().SetTrigger("hit");
+                if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
+                {
+                    GetComponentInChildren<Animator>().SetTrigger("die");
+                    dead = true;
+                    GetComponent<Collider>().enabled = false;
+                }
+                else
+                {
+                    GetComponentInChildren<Animator>().SetTrigger("hit");
+                }
             }
         }
+    }
+
+    void OnCollisionEnter(Collision col){
+        if (col.gameObject.tag == "ground")
+            jumps = 2;
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class enemyAttack : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        animator.gameObject.GetComponentInParent<VampireController>().InvokeAttack();
+	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -19,7 +19,6 @@ public class enemyAttack : StateMachineBehaviour {
         GameObject parent = animator.gameObject.transform.parent.gameObject;
         parent.GetComponent<VampireController>().isAttacking = false;
         parent.GetComponent<VampireController>().InvokeCanAttack(3f);
-        Debug.Log("Not Attacking Anymore");
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -61,17 +61,6 @@ public class MariaController : MonoBehaviour
             animator.SetInteger("state", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("hi");
-            int jump = animator.GetInteger("jump");
-            if (jump == 1)
-            {
-                animator.SetInteger("jump", 2);
-            }else if (jump == 0){
-                animator.SetInteger("jump", 1);
-            }
-            if(jump < 2)
-                rb.AddForce(new Vector3(0,5f,0), ForceMode.Impulse);
-        }
+
     }
 }

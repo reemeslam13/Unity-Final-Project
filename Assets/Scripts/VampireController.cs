@@ -8,12 +8,11 @@ public class VampireController : MonoBehaviour {
     public GameObject player;
     NavMeshAgent agent;
     public bool isAttacking;
-    public bool isBeingHit;
     Vector3 startLocation;
     public GameObject enemy;
     Animator anim;
-    public static bool dead;
-    public static bool hit = false;
+    public bool dead;
+    public bool hit = false;
 
     public bool canAttack;
 
@@ -23,7 +22,6 @@ public class VampireController : MonoBehaviour {
 	void Start () {
         canAttack = true;
         isAttacking = false;
-        isBeingHit = false;
         dead = false;
         agent = GetComponent<NavMeshAgent>();
         target = player.transform;
@@ -69,7 +67,6 @@ public class VampireController : MonoBehaviour {
 
     void attack(){
         canAttack = false;
-        isAttacking = true;
         GetComponentInChildren<Animator>().SetTrigger("attack");
     }
 
@@ -91,5 +88,13 @@ public class VampireController : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    public void InvokeAttack(){
+        Invoke("InvokeAttacking", 0.5f);
+    }
+
+    void InvokeAttacking(){
+        isAttacking = true;
     }
 }

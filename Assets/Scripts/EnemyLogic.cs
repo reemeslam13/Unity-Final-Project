@@ -21,14 +21,17 @@ public class EnemyLogic : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider col){
-        if(col.tag == "sword" && MariaController.mariaAttacking && !VampireController.hit){
-			VampireController.hit = true;
+        bool hit = GetComponent<VampireController>().hit;
+        bool dead = GetComponent<VampireController>().dead;
+        if(col.tag == "sword" && MariaController.mariaAttacking){
             int damage = player.GetComponent<Player>().attackDamage * player.GetComponentInChildren<MariaController>().attackType;
             health -= damage;
             print("Enemy HP: " + health + " / " + maxHealth);
+            Player.rage = (Player.rage > 100) ? 100 : Player.rage + 10;
+            print("RAGE: " + Player.rage);
             if(health <= 0){
                 print("ouch im dead");
-                VampireController.dead = true;
+                GetComponent<VampireController>().dead = true;
                 GetComponentInChildren<Animator>().SetTrigger("death");
             } else {
                 GetComponentInChildren<Animator>().SetTrigger("attacked");

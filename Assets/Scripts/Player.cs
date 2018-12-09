@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int healthPoints;
+    public int healthPoints = 100;
     public int maxHealthPoints;
     public int attackDamage;
     public int fury;
@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public int experience;
     public int skillPoints;
     public List<int> upgrades;
+    public static int rage;
+    public int maxRage;
 
     public void Start(){
         upgrades = new List<int>();
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
         level = 1;
         experience = 0;
         attackDamage = 10;
+        rage = 0;
+        maxRage = 100;
     }
 
     public void refillHealth(){
