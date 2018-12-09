@@ -10,7 +10,8 @@ public class MariaController : MonoBehaviour
     public Animator animator;
     public byte LIGHT_ATTACK = 1;
     public byte HEAVY_ATTACK = 3;
-    public byte attackType; 
+    public byte attackType;
+    public Rigidbody rb;
 
     // Use this for initialization
     void Start()
@@ -20,6 +21,7 @@ public class MariaController : MonoBehaviour
         animator.SetInteger("state", 0);
         mariaAttacking = false;
         beingHit = false;
+        rb = GetComponentInParent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,19 @@ public class MariaController : MonoBehaviour
             //Idle
             state = 0;
             animator.SetInteger("state", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("hi");
+            int jump = animator.GetInteger("jump");
+            if (jump == 1)
+            {
+                animator.SetInteger("jump", 2);
+            }else if (jump == 0){
+                animator.SetInteger("jump", 1);
+            }
+            if(jump < 2)
+                rb.AddForce(new Vector3(0,5f,0), ForceMode.Impulse);
         }
     }
 }
