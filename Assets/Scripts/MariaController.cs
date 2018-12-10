@@ -60,7 +60,21 @@ public class MariaController : MonoBehaviour
             state = 0;
             animator.SetInteger("state", 0);
         }
+        if (Input.GetKeyDown(KeyCode.R) && Player.rage >= 100){
+            animator.SetTrigger("rage");
+            print("RAGE :::: ON");
+            InvokeRage();
+        }
+    }
 
+    public void InvokeRage()
+    {
+        Invoke("Rage", 10);
+    }
 
+    void Rage()
+    {
+        print("RAGE :::: OFF");
+        Player.rage = 0;
     }
 }
