@@ -9,3 +9,4 @@
 ## Game
 ### Functionalities
 - Pause Game
+- Stop enemy from getting hit twice
