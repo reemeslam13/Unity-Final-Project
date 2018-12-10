@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLogic : MonoBehaviour {
+public class EnemyLogic : MonoBehaviour
+{
 
     public int maxHealth = 50;
     public int health;
@@ -14,35 +15,49 @@ public class EnemyLogic : MonoBehaviour {
     {
         health = maxHealth;
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
 
-    void OnTriggerEnter(Collider col){
-        
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+
         bool hit, dead;
-        if (gameObject.tag == "vampire") {
+        if (gameObject.tag == "vampire")
+        {
             hit = GetComponent<VampireController>().hit;
             dead = GetComponent<VampireController>().dead;
-        } else if(gameObject.tag == "erika") {
+        }
+        else if (gameObject.tag == "erika")
+        {
             dead = GetComponent<ErikaController>().dead;
         }
-   
-        if(col.tag == "sword" && MariaController.mariaAttacking){
+
+        if (col.tag == "sword" && MariaController.mariaAttacking)
+        {
+            Debug.Log("getting hit");
             int damage = player.GetComponent<Player>().attackDamage * player.GetComponentInChildren<MariaController>().attackType;
             health -= damage;
             print("HP: " + health);
             Player.rage = (Player.rage > 100) ? 100 : Player.rage + 10;
-            if(health <= 0){
-                
-                if (gameObject.tag == "vampire")
-                    GetComponent<VampireController>().dead = true;
-                else if (gameObject.tag == "erika")
-                    GetComponent<ErikaController>().dead = true;
+            if (health <= 0)
+            {
 
-                GetComponentInChildren<Animator>().SetTrigger("death");
-            } else {
+                if (gameObject.tag == "vampire")
+                {
+                    GetComponent<VampireController>().dead = true;
+                    GetComponentInChildren<Animator>().SetTrigger("death");
+                }
+                else if (gameObject.tag == "erika")
+                {
+                    GetComponent<ErikaController>().dead = true;
+                    GetComponentInChildren<Animator>().SetBool("death", true);
+                }
+            }
+            else
+            {
                 GetComponentInChildren<Animator>().SetTrigger("attacked");
             }
         }
