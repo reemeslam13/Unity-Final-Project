@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4446475875608162}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: enemyHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -501,12 +501,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4188204383193610}
   - component: {fileID: 195427052756407054}
-  - component: {fileID: 136115232221231750}
   - component: {fileID: 54741042918257054}
   - component: {fileID: 114576192766533076}
+  - component: {fileID: 65699465484328714}
+  - component: {fileID: 114239928242134996}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: vampire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1030,9 +1031,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4634724591400906}
+  - component: {fileID: 65979193887862082}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: enemyHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1115,7 +1117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073041748678838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -2.82, z: 1.93}
+  m_LocalPosition: {x: -0.08, y: -0.92, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4481942153744388}
@@ -1158,7 +1160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431595781244510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.82, z: -4.8}
+  m_LocalPosition: {x: 0, y: 0.92, z: 3.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124991978664902}
@@ -2025,6 +2027,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65699465484328714
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431595781244510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44, y: 1.93, z: 0.66}
+  m_Center: {x: 0, y: 0.03, z: 0}
+--- !u!65 &65979193887862082
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995371735822918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.72, y: 0.19, z: 0.25}
+  m_Center: {x: -0.1, y: 0, z: 0}
 --- !u!95 &95170934427828320
 Animator:
   serializedVersion: 3
@@ -2043,6 +2069,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114239928242134996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431595781244510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efa9a716e0e94890b6b1246a577f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  health: 0
+  player: {fileID: 0}
+  attackDamage: 10
 --- !u!114 &114576192766533076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2056,20 +2097,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10.99
   player: {fileID: 0}
+  isAttacking: 0
   enemy: {fileID: 1073041748678838}
---- !u!136 &136115232221231750
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431595781244510}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.97
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  dead: 0
+  hit: 0
+  canAttack: 0
 --- !u!137 &137340098022240350
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2085,7 +2117,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8e378cf9712c545fcbd937d82d581848, type: 3}
+  - {fileID: 2100000, guid: 5839b3d44f679e644b3cef6e0994210b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2190,16 +2222,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1431595781244510}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.19
+  m_Radius: 0.52
   m_Speed: 5
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1.74
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.98
+  m_Height: 2.07
   m_BaseOffset: 0.94
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

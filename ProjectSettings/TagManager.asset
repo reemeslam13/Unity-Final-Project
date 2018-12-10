@@ -7,6 +7,9 @@ TagManager:
   - sword
   - enemyHand
   - ground
+  - arrow
+  - vampire
+  - erika
   layers:
   - Default
   - TransparentFX

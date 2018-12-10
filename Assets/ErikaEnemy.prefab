@@ -277,9 +277,10 @@ GameObject:
   - component: {fileID: 4161964789466876}
   - component: {fileID: 95649141477718838}
   - component: {fileID: 114051502570637248}
+  - component: {fileID: 65221894165962764}
   m_Layer: 0
   m_Name: ErikaEnemy
-  m_TagString: Untagged
+  m_TagString: erika
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1368,7 +1369,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203132573325450}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -11.92, y: 0, z: 17.56}
+  m_LocalPosition: {x: -5.753004, y: -0.03, z: 10.502734}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4380408535013084}
@@ -2222,6 +2223,18 @@ Transform:
   m_Father: {fileID: 4030394979892954}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65221894165962764
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203132573325450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40587747, y: 1.8703729, z: 0.30384353}
+  m_Center: {x: -0.019972004, y: 0.86491424, z: 0.023882968}
 --- !u!95 &95649141477718838
 Animator:
   serializedVersion: 3
@@ -2251,9 +2264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f5b2b9e624e584e89cec9d97be75a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFiring: 0
+  firingDone: 0
   animator: {fileID: 95649141477718838}
   firePoint: {fileID: 1586571498550908}
-  arrowObj: {fileID: 1819884906669112, guid: 81f282a5266bc0245b64e3763e48d090, type: 2}
+  arrowObj: {fileID: 1176415329354942, guid: 81f282a5266bc0245b64e3763e48d090, type: 2}
   target: {fileID: 0}
   targetTransform: {fileID: 0}
 --- !u!137 &137319110954279104

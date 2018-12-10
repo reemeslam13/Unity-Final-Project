@@ -77,6 +77,22 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
         }
+
+        if(col.tag == "arrow"){
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
+            MariaController.beingHit = true;
+            Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+            if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("die");
+                dead = true;
+                GetComponent<Collider>().enabled = false;
+            }
+            else
+            {
+                GetComponentInChildren<Animator>().SetTrigger("hit");
+            }
+        }
     }
 
     void OnCollisionEnter(Collision col){

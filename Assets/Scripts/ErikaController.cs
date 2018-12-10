@@ -5,22 +5,21 @@ using UnityEngine;
 public class ErikaController : MonoBehaviour
 {
 
-    public static bool isFiring;
-    public static bool firingDone;
+    public  bool isFiring;
+    public  bool firingDone;
+    public bool dead;
     public Animator animator;
     public GameObject firePoint;
     public GameObject arrowObj;
     public GameObject target;
     public Transform targetTransform;
-    public static int state;
 
     // Use this for initialization
     void Start()
     {
         targetTransform = target.transform;
         firingDone = true;
-        state = 0;
-        animator.SetInteger("state", 0);
+        //animator.SetInteger("state", 0);
         isFiring = false;
         animator = GetComponent<Animator>();
     }
@@ -28,41 +27,53 @@ public class ErikaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(targetTransform.position, transform.position);
-        if (state == 1)
-        {
+        if (!dead){
+            float distance = Vector3.Distance(targetTransform.position, transform.position);
+
             if (firingDone == false)
             {
                 spawnArrow();
                 firingDone = true;
             }
-        }
-        if (distance <= 10)
-        {
-            animator.SetTrigger("shoot");
-            state = 1;
-            animator.SetInteger("state", 1);
-        }
-        else if (distance > 10)
-        {
-            state = 0;
-            animator.SetInteger("state", 0);
-            animator.ResetTrigger("shoot");
-        }
-        if (distance <= 10)
-        {
-            FaceTarget();
+
+            if (distance <= 10)
+            {
+
+                FaceTarget();
+                if (!isFiring)
+                {
+                    isFiring = true;
+                    animator.SetBool("shoot", true);
+                }
+            }
+
+            else if (distance > 10)
+            {
+                animator.SetBool("shoot", false);
+                //animator.SetInteger("state", 0);
+            }
         }
     }
+
+    public void cooldownShoot() {
+        Invoke("stopShooting", 3);
+    }
+
+
+    public void stopShooting() {
+        isFiring = false;
+    }
+
     public void spawnArrow()
     {
         GameObject arrow;
         if (firePoint != null)
         {
             arrow = Instantiate(arrowObj, firePoint.transform.position, Quaternion.identity);
-            arrow.transform.LookAt(new Vector3(targetTransform.position.x, targetTransform.position.y + 1.5f, targetTransform.position.z));
+            arrow.transform.LookAt(new Vector3(targetTransform.position.x, targetTransform.position.y, targetTransform.position.z));
         }
     }
+
     public void FaceTarget()
     {
         Vector3 direction = (targetTransform.position - transform.position).normalized;
