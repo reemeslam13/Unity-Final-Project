@@ -10,6 +10,10 @@ TagManager:
   - arrow
   - vampire
   - erika
+  - Fire
+  - weakpoint1
+  - weakpoint2
+  - weakpoint3
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
             int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
 			//Forward motion
             transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
+            transform.Translate(Input.GetAxis("Horizontal") * movementSpeed * running, 0, 0);
             //Horizontal rotation
             transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
         }
