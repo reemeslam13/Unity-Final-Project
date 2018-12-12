@@ -9,6 +9,7 @@ public class EnemyLogic : MonoBehaviour
     public int health;
     public GameObject player;
     public int attackDamage = 10;
+    public ProgressBar hp;
 
     // Use this for initialization
     void Start()
@@ -18,7 +19,7 @@ public class EnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        hp.BarValue = (int)(((double)health / (double)maxHealth) * 100.0);
     }
 
     void OnTriggerEnter(Collider col)

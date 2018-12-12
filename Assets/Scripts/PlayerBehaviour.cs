@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public static float movementSpeed = 0.05f;
+    public static float movementSpeed = 5f;
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
@@ -25,7 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(!MariaController.mariaAttacking && !MariaController.beingHit && !dead){
             int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
 			//Forward motion
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running * Time.deltaTime);
             //Horizontal rotation
             transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
         }
@@ -52,7 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
             if(jumps > 0){
                 GetComponentInChildren<Animator>().SetTrigger("jump");
                 jumps--;
-                GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
+                GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 6.0f, 0), ForceMode.Impulse);
             }
         }
     }

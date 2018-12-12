@@ -37,7 +37,7 @@ public class ErikaController : MonoBehaviour
                 firingDone = true;
             }
 
-            if (distance <= 10)
+            if (distance <= 20)
             {
 
                 FaceTarget();
@@ -48,11 +48,15 @@ public class ErikaController : MonoBehaviour
                 }
             }
 
-            else if (distance > 10)
+            else if (distance > 20)
             {
                 animator.SetBool("shoot", false);
                 //animator.SetInteger("state", 0);
             }
+        }
+        else if(dead)
+        {
+            Destroy(this.GetComponent<BoxCollider>());
         }
     }
 
