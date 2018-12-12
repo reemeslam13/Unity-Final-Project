@@ -84,8 +84,16 @@ public class PlayerBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision col){
         if (col.gameObject.tag == "ground")
             jumps = 2;
-        if (col.gameObject.CompareTag("Rock"))
+        else if (col.gameObject.CompareTag("Rock"))
+        {
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 5;
             Destroy(col.gameObject);
+        }
+
+        else if(col.gameObject.CompareTag("Wall"))
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 5;
+          
+        
 
 
 
