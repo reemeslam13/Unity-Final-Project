@@ -55,6 +55,8 @@ public class PlayerBehaviour : MonoBehaviour
                 GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
             }
         }
+
+      
     }
 
     void OnTriggerEnter(Collider col){
@@ -82,5 +84,13 @@ public class PlayerBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision col){
         if (col.gameObject.tag == "ground")
             jumps = 2;
+        if (col.gameObject.CompareTag("Rock"))
+            Destroy(col.gameObject);
+
+
+
+
     }
+
+
 }

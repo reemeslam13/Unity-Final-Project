@@ -31,7 +31,7 @@ public class fallingStones : MonoBehaviour
     void  createRockObst(){
         rock = Instantiate(g) as GameObject;
         rock.tag = "Rock";
-        rock.transform.position = new Vector3(t.position.x, t.position.y + 20, this.t.position.z);
+        rock.transform.position = new Vector3(t.position.x,9, this.t.position.z);
         randTime = (int)Random.Range((int)Time.time + 5, (int)Time.time + 25);
         Debug.Log(randTime);
 
