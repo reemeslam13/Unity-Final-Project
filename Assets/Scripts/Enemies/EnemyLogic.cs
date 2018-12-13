@@ -60,7 +60,7 @@ public class EnemyLogic : MonoBehaviour
                 hitCounter = 0;
             if (health <= 0)
             {
-
+                Player.getExp(50);
                 if (gameObject.tag == "vampire")
                 {
                     GetComponent<VampireController>().dead = true;

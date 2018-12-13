@@ -9,7 +9,6 @@ public class PlayerBehaviour : MonoBehaviour
     public float sensitivityY = 1;
     public Camera cam;
     public int jumps;
-    public GameObject maria;
     public bool dead;
 
     // Use this for initialization

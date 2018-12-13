@@ -51,6 +51,7 @@ public class bossAgentBehavior : MonoBehaviour {
 	public void die() {
 		dead = true;
 		busy = true;
+		Player.getExp(50);
 		isAttacking = false;
         animator.SetTrigger("die");
 	}
