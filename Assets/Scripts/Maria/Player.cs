@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public static int rage;
     public int maxRage;
 
+    public ProgressBar progressBar;
+    public ProgressBar rageBar;
+
     public void Start(){
         upgrades = new List<int>();
         healthPoints = 100;
@@ -34,13 +37,19 @@ public class Player : MonoBehaviour
         this.healthPoints = this.maxHealthPoints;
     }
 
+    void Update()
+    {
+        rageBar.BarValue = rage;
+        progressBar.BarValue = (int)(((double)healthPoints/(double)maxHealthPoints)*100);
+    }
+
     //Types:
     //0 = Health, 1 = Movement, 2 = Attack
     public void upgradeSkill(int type){
         upgrades[level-2] = type;
         switch(type){
             case 0: maxHealthPoints = (int)(1.1 * maxHealthPoints); healthPoints = maxHealthPoints; break;
-            case 1: PlayerBehaviour.movementSpeed *= 1.1f; break;
+            case 1: GetComponentInParent<PlayerBehaviour>().movementSpeed *= 1.1f; break;
             case 2: attackDamage = (int)(1.1 * attackDamage); break;
         }
     }

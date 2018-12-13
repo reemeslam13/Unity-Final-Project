@@ -5,8 +5,8 @@ using UnityEngine;
 public class ErikaController : MonoBehaviour
 {
 
-    public  bool isFiring;
-    public  bool firingDone;
+    public bool isFiring;
+    public bool firingDone;
     public bool dead;
     public Animator animator;
     public GameObject firePoint;
@@ -27,7 +27,8 @@ public class ErikaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dead){
+        if (!dead)
+        {
             float distance = Vector3.Distance(targetTransform.position, transform.position);
 
             if (firingDone == false)
@@ -36,7 +37,7 @@ public class ErikaController : MonoBehaviour
                 firingDone = true;
             }
 
-            if (distance <= 10)
+            if (distance <= 20)
             {
 
                 FaceTarget();
@@ -47,20 +48,26 @@ public class ErikaController : MonoBehaviour
                 }
             }
 
-            else if (distance > 10)
+            else if (distance > 20)
             {
                 animator.SetBool("shoot", false);
                 //animator.SetInteger("state", 0);
             }
         }
+        else if(dead)
+        {
+            Destroy(this.GetComponent<BoxCollider>());
+        }
     }
 
-    public void cooldownShoot() {
+    public void cooldownShoot()
+    {
         Invoke("stopShooting", 3);
     }
 
 
-    public void stopShooting() {
+    public void stopShooting()
+    {
         isFiring = false;
     }
 
@@ -70,7 +77,7 @@ public class ErikaController : MonoBehaviour
         if (firePoint != null)
         {
             arrow = Instantiate(arrowObj, firePoint.transform.position, Quaternion.identity);
-            arrow.transform.LookAt(new Vector3(targetTransform.position.x, targetTransform.position.y, targetTransform.position.z));
+            arrow.transform.LookAt(new Vector3(targetTransform.position.x, targetTransform.position.y + 1.5f, targetTransform.position.z));
         }
     }
 

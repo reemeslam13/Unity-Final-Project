@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public static float movementSpeed = 0.05f;
+    public float movementSpeed = 5.0f;
     public float sensitivityX = 20f;
     public float sensitivityY = 1;
     public Camera cam;
@@ -22,11 +22,12 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!MariaController.mariaAttacking && !MariaController.beingHit && !dead){
+        if (!MariaController.mariaAttacking && !MariaController.beingHit && !dead)
+        {
             int running = (Input.GetKey(KeyCode.LeftShift)) ? 2 : 1;
-			//Forward motion
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running);
-            transform.Translate(Input.GetAxis("Horizontal") * movementSpeed * running, 0, 0);
+            //Forward motion
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * movementSpeed * running * Time.deltaTime);
+            transform.Translate(Input.GetAxis("Horizontal") * movementSpeed * running * Time.deltaTime, 0, 0);
             //Horizontal rotation
             transform.Rotate(0.0f, Input.GetAxis("Mouse X") * sensitivityX, 0.0f);
         }
@@ -41,27 +42,32 @@ public class PlayerBehaviour : MonoBehaviour
         );
         }
         else if (cam.transform.eulerAngles.x >= 300.0f)
-            {
-                cam.transform.eulerAngles = new Vector3(
-                0.0f,
-                cam.transform.eulerAngles.y,
-                cam.transform.eulerAngles.z
-            );
+        {
+            cam.transform.eulerAngles = new Vector3(
+            0.0f,
+            cam.transform.eulerAngles.y,
+            cam.transform.eulerAngles.z
+        );
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && !dead){
-            if(jumps > 0){
+        if (Input.GetKeyDown(KeyCode.Space) && !dead)
+        {
+            if (jumps > 0)
+            {
                 GetComponentInChildren<Animator>().SetTrigger("jump");
                 jumps--;
-                GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
+                GetComponentInChildren<Rigidbody>().AddForce(new Vector3(0, 6f, 0), ForceMode.Impulse);
             }
         }
     }
 
-    void OnTriggerEnter(Collider col){
-        if(col.tag == "enemyHand"){
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "enemyHand")
+        {
             bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking && !Input.GetKey(KeyCode.LeftControl);
-            if(gettingAttacked){
+            if (gettingAttacked)
+            {
                 gameObject.GetComponentInChildren<Player>().healthPoints -= col.gameObject.GetComponentInParent<EnemyLogic>().attackDamage;
                 MariaController.beingHit = true;
                 Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
@@ -76,8 +82,9 @@ public class PlayerBehaviour : MonoBehaviour
                     GetComponentInChildren<Animator>().SetTrigger("hit");
                 }
             }
-        } 
-        else if(col.tag == "weakpoint1" || col.tag == "weakpoint2") {
+        }
+        else if (col.tag == "weakpoint1" || col.tag == "weakpoint2")
+        {
             bool gettingAttacked = bossAgentBehavior.isAttacking && !Input.GetKey(KeyCode.LeftControl);
             if (gettingAttacked)
             {
@@ -98,7 +105,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if(col.tag == "arrow"){
+        if (col.tag == "arrow")
+        {
             gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
             MariaController.beingHit = true;
             Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
@@ -115,7 +123,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col){
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "chest")
+        {
+            col.gameObject.GetComponent<Animator>().SetBool("Collect",true);
+            GetComponentInChildren<Player>().refillHealth();
+        }
         if (col.gameObject.tag == "ground")
             jumps = 2;
     }
