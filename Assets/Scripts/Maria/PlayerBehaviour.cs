@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -63,6 +64,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.tag == "lava")
+        {
+            GetComponentInChildren<Player>().healthPoints = 0;
+            dead = true;
+            GetComponentInChildren<Animator>().SetTrigger("die");
+        }
         if (col.tag == "enemyHand")
         {
             bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking && !Input.GetKey(KeyCode.LeftControl);
@@ -75,7 +82,7 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     GetComponentInChildren<Animator>().SetTrigger("die");
                     dead = true;
-                    GetComponent<Collider>().enabled = false;
+                    //GetComponent<Collider>().enabled = false;
                 }
                 else
                 {
@@ -125,10 +132,30 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        if (col.gameObject.tag == "obstacle")
+        {
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 3;
+                MariaController.beingHit = true;
+                Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+                if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
+                {
+                    GetComponentInChildren<Animator>().SetTrigger("die");
+                    dead = true;
+                    //GetComponent<Collider>().enabled = false;
+                }
+                else
+                {
+                    GetComponentInChildren<Animator>().SetTrigger("hit");
+                }
+        }
         if (col.gameObject.tag == "chest")
         {
             col.gameObject.GetComponent<Animator>().SetBool("Collect",true);
             GetComponentInChildren<Player>().refillHealth();
+        }
+        if (col.gameObject.tag == "gate")
+        {
+            //SceneManager.LoadScene("");
         }
         if (col.gameObject.tag == "ground")
             jumps = 2;

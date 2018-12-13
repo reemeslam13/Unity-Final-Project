@@ -15,6 +15,9 @@ TagManager:
   - weakpoint2
   - weakpoint3
   - chest
+  - gate
+  - lava
+  - obstacle
   layers:
   - Default
   - TransparentFX
