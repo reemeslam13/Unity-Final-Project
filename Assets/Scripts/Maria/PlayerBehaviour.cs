@@ -63,6 +63,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+
+        if (col.gameObject.tag == "lava")
+        {
+            GetComponentInChildren<Player>().healthPoints = 0;
+            dead = true;
+            GetComponentInChildren<Animator>().SetTrigger("die");
+        }
+
         if (col.tag == "enemyHand")
         {
             bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking && !Input.GetKey(KeyCode.LeftControl);
@@ -128,6 +136,23 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        if (col.gameObject.tag == "obstacle")
+        {
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 3;
+            MariaController.beingHit = true;
+            Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+            if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("die");
+                dead = true;
+                //GetComponent<Collider>().enabled = false;
+            }
+            else
+            {
+                GetComponentInChildren<Animator>().SetTrigger("hit");
+            }
+        }
+
         if (col.gameObject.tag == "chest")
         {
             col.gameObject.GetComponent<Animator>().SetBool("Collect",true);
