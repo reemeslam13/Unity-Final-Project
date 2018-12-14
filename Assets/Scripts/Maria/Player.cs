@@ -28,14 +28,14 @@ public class Player : MonoBehaviour
 
     public void Start(){
         upgrades = new List<int>();
-        maxHealthPoints = PlayerPrefs.GetInt("maxhp");
+        maxHealthPoints = PlayerPrefs.GetInt("maxhp", 100);
         healthPoints = maxHealthPoints;
-        experience = PlayerPrefs.GetInt("xp");
-        level = PlayerPrefs.GetInt("level");
-        skillPoints = PlayerPrefs.GetInt("sp");
-        rage = PlayerPrefs.GetInt("rage");
+        experience = PlayerPrefs.GetInt("xp",0);
+        level = PlayerPrefs.GetInt("level",1);
+        skillPoints = PlayerPrefs.GetInt("sp,0");
+        rage = PlayerPrefs.GetInt("rage",0);
         levelText.text = "Level " + level;
-        attackDamage = PlayerPrefs.GetInt("attack");
+        attackDamage = PlayerPrefs.GetInt("attack",10);
         maxRage = 100;
         skillPointText.text = "SP: " + skillPoints;
     }

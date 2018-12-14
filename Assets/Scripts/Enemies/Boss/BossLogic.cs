@@ -7,6 +7,8 @@ public class BossLogic : MonoBehaviour {
 	public int health;
 	public int maxHealth = 200;
 	public static bool weakPointGone;
+    public ProgressBar hp;
+
 
     // Use this for initialization
     void Start () {
@@ -15,6 +17,7 @@ public class BossLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        hp.BarValue = (int)(((double)health / (double)maxHealth) * 100.0);
 		weakPointDestroyed();
 	}
 
