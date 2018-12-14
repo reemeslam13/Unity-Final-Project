@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45cdd7be55c783844add8ed6d9828f62
+guid: ce62195e728d2439baae88c22950e825
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: SawBladeFrameBar
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #83'
+    second: {fileID: 2100000, guid: cf3729a9d54a844e1a737bbc3afff0ad, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +86,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0

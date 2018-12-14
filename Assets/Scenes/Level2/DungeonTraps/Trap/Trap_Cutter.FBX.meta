@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9bf07121db191094aa8381ef67016a19
+guid: e9b9fca0d56cc4b8e87b64355b02d692
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -17,7 +17,12 @@ ModelImporter:
     4300002: Trap_Cutter
     9500000: //RootNode
     11100000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 0caf59c9d25f44defa7a7a349d0352cc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -89,7 +94,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0

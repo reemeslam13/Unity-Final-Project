@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67dc04eafc9ff5047a172f6abe1deb8b
+guid: faf7d091a204141a89310905af951a0e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -16,7 +16,12 @@ ModelImporter:
     4300000: holder
     4300002: AxeRing
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #84'
+    second: {fileID: 2100000, guid: 9b27bed95ea7b4adba41a231ad25c32a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -88,7 +93,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0

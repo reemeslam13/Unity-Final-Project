@@ -123,7 +123,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         if (col.tag == "gate" && Player.wavesCompleted == 3){
-            SceneManager.LoadScene("BossLevel");
+            SceneManager.LoadScene(2);
             PlayerPrefs.SetInt("xp", Player.experience);
             PlayerPrefs.SetInt("level", Player.level);
             PlayerPrefs.SetInt("sp", Player.skillPoints);

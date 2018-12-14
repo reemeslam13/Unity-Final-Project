@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e5464c3bc40f874a932550f5cc4fd9e
+guid: 2c5874072b1bf4e1d9946f2326959958
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -10,7 +10,12 @@ ModelImporter:
     4300000: Trap_Fire
     9500000: //RootNode
     11100000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 0caf59c9d25f44defa7a7a349d0352cc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -82,7 +87,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0

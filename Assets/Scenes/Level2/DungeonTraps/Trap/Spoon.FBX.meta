@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2652aade18e3fa2459b9f3cc633dc85a
+guid: af2b53d9cd3b84c7fbf4abfb55995d9c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Spoon
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #84'
+    second: {fileID: 2100000, guid: 9b27bed95ea7b4adba41a231ad25c32a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +86,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0

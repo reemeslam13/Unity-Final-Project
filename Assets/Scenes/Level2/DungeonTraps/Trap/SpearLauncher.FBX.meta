@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d1acf5ed9a24034892904fdd6c59359
+guid: d87121d9c9911463a8f0e1614ac9f457
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: SpearLauncher
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #82'
+    second: {fileID: 2100000, guid: b9794fcd092ae49aa8913739c5933952, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +86,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
