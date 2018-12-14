@@ -28,14 +28,14 @@ public class Player : MonoBehaviour
 
     public void Start(){
         upgrades = new List<int>();
-        healthPoints = 100;
-        maxHealthPoints = 100;
-        level = 1;
-        levelText.text = "Level 1";
-        skillPoints = 0;
-        experience = 0;
-        attackDamage = 10;
-        rage = 0;
+        maxHealthPoints = PlayerPrefs.GetInt("maxhp", 100);
+        healthPoints = maxHealthPoints;
+        experience = PlayerPrefs.GetInt("xp",0);
+        level = PlayerPrefs.GetInt("level",1);
+        skillPoints = PlayerPrefs.GetInt("sp,0");
+        rage = PlayerPrefs.GetInt("rage",0);
+        levelText.text = "Level " + level;
+        attackDamage = PlayerPrefs.GetInt("attack",10);
         maxRage = 100;
         skillPointText.text = "SP: " + skillPoints;
     }
@@ -100,10 +100,11 @@ public class Player : MonoBehaviour
     void killAllEnemies() {
         new List<GameObject>(GameObject.FindGameObjectsWithTag("erika")).ForEach(obj => Destroy(obj));
         new List<GameObject>(GameObject.FindGameObjectsWithTag("bora3y")).ForEach(obj => Destroy(obj));
+        new List<GameObject>(GameObject.FindGameObjectsWithTag("boss")).ForEach(obj => Destroy(obj));
+
     }
 
     void lvlUp() {
-        experience = 0;
         level++;
         skillPoints++;
     }

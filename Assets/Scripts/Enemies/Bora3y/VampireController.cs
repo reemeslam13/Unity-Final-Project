@@ -35,11 +35,14 @@ public class VampireController : MonoBehaviour {
             float distance = Vector3.Distance(target.position, transform.position);
 
             if(distance <= lookRadius){
+                GetComponentInChildren<FootstepManager>().playFootsteps(true);
                 agent.SetDestination(target.position);
                 anim.SetBool("isRunning", true);
+                GetComponent<Bora3yAudioController>().playDetect();
                 anim.SetBool("isIdle", false);
 
                 if (distance <= agent.stoppingDistance){
+                    GetComponentInChildren<FootstepManager>().playFootsteps(false);
                     //Attack target
                     if(canAttack)
                         attack();

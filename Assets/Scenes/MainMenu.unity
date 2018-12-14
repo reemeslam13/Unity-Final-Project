@@ -2770,12 +2770,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "main menu background image from :https://www.google.com.eg/search?q=kratos+background&rlz=1C1EJFA_enEG681EG682&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjis4rD_JnfAhXFYlAKHTFkDn0Q_AUIDigB&biw=911&bih=417#imgrc=Se94bJM2ZP3HSM\nMain
-    menu font : asset store\ndoor by Roombaroom : https://www.turbosquid.com/FullPreview/Index.cfm/ID/767776\nstone
-    by Game Essentials: https://www.turbosquid.com/FullPreview/Index.cfm/ID/723445\n
-    halberd by GameASS https://www.turbosquid.com/FullPreview/Index.cfm/ID/1345886\n
-    Medieval Horn Lantern (LD) by SpecterArts\nhttps://www.turbosquid.com/FullPreview/Index.cfm/ID/485023\n
-    Free Treasure Chest by HD_Ready https://www.turbosquid.com/FullPreview/Index.cfm/ID/615861\n"
+  m_Text: "main menu background image: https://bit.ly/2SHHUCw\r\nMain menu by walked
+    city infotech : https://bit.ly/2PDYQrV\r\ndoor by Roombaroom : https://bit.ly/2PCsVIc\r\nstone
+    by Game Essentials: https://bit.ly/2Gefa32\r\nhalberd by GameASS: https://bit.ly/2LhCXxP\r\nMedieval
+    Horn Lantern by SpecterArts: https://bit.ly/2A1BKGu\r\nTreasure Chest by HD_Ready:
+    https://bit.ly/2Eley9X\r\nFortress Gate by z-craft: https://bit.ly/2GgXRhZ\r\nGreen
+    Forest by purple jump: https://bit.ly/2UEZdGp\r\nErika,Maria,Vampire(bora3y),mutant(boss):
+    https://www.mixamo.com/\r\nLava by moonflower carnivore: https://bit.ly/2QvWtfT\r\nDungeon
+    Traps by sugar asset: https://bit.ly/2Gi05xl"
 --- !u!222 &1273710860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3019,6 +3021,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1350742400}
   - component: {fileID: 1350742399}
+  - component: {fileID: 1350742402}
+  - component: {fileID: 1350742401}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -3080,6 +3084,108 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1350742401
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1350742398}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4a4d60d89a1a6ab4c94f10302cfec7ef, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.277
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 211
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!81 &1350742402
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1350742398}
+  m_Enabled: 1
 --- !u!1 &1375287388
 GameObject:
   m_ObjectHideFlags: 0
@@ -4653,8 +4759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -100}
-  m_SizeDelta: {x: 200, y: 800}
+  m_AnchoredPosition: {x: 20, y: -6}
+  m_SizeDelta: {x: 200, y: 627.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903179243
 MonoBehaviour:
@@ -4677,7 +4783,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4d961a987e869a446a78d18bda09fb1e, type: 3}
-    m_FontSize: 20
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -4688,11 +4794,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "The player controls the main character (Maria) in an indoors or outdoors
-    environment.\r\nThe goal of the player is to go through all the levels and defeat
-    the boss.\r\nThe entire gameplay of the game from the first level until the boss
-    is defeated should not\r\nbe doable in less than x minutes, where x is the number
-    of team members."
+  m_Text: "Goal: Kill all enemies in the forest and avoid traps; then proceed to the
+    boss level from the fortress gate and slay the boss.\r\n\r\nControls: \r\n    \u2022
+    Move with w,a,s,d keys\r\n    \u2022 Rotate camera with mouse\r\n    \u2022 Light
+    attack with LMB and heavy attack with RMB\r\n    \u2022 When rage is filled use
+    it by pressing R\r\n    \u2022 Run by holding the left shit button\r\n    \u2022
+    Jump using space\r\n    \u2022 Block attacks by pressing left ctrl button"
 --- !u!222 &1903179244
 CanvasRenderer:
   m_ObjectHideFlags: 0

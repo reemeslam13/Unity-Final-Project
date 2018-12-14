@@ -42,6 +42,7 @@ public class MariaController : MonoBehaviour
         }
 		if (Input.GetAxis("Vertical") != 0)
         {
+            GetComponentInParent<FootstepManager>().playFootsteps(true);
             //Running
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -57,6 +58,7 @@ public class MariaController : MonoBehaviour
         }
         else
         {
+            GetComponentInParent<FootstepManager>().playFootsteps(false);
             //Idle
             state = 0;
             animator.SetInteger("state", 0);
@@ -71,6 +73,7 @@ public class MariaController : MonoBehaviour
 
     public void InvokeRage()
     {
+        GetComponent<MariaAudioController>().playRage();
         Invoke("Rage", 10);
     }
 

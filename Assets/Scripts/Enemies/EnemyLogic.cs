@@ -69,11 +69,13 @@ public class EnemyLogic : MonoBehaviour
                 if (gameObject.tag == "bora3y")
                 {
                     GetComponent<VampireController>().dead = true;
+                    GetComponent<Bora3yAudioController>().playDeath();
                     GetComponentInChildren<Animator>().SetTrigger("death");
                 }
                 else if (gameObject.tag == "erika")
                 {
                     GetComponent<ErikaController>().dead = true;
+                    GetComponent<ErikaAudioController>().playDeath();
                     GetComponentInChildren<Animator>().SetBool("death", true);
                 }
             }
