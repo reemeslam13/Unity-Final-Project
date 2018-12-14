@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public static int rage;
     public int maxRage;
 
-    public ProgressBar progressBar;
+    public ProgressBar healthBar;
     public ProgressBar rageBar;
     public Text skillPointText;
     public Text levelText;
@@ -44,10 +44,17 @@ public class Player : MonoBehaviour
     void Update()
     {
         rageBar.BarValue = rage;
-        progressBar.BarValue = (int)(((double)healthPoints/(double)maxHealthPoints)*100);
+        healthBar.BarValue = (int)(((double)healthPoints/(double)maxHealthPoints)*100);
         levelText.text = "Level " + level;
         skillPointText.text = "SP: " + skillPoints;
         expText.text = "XP: " + experience + "/" + (500 * (Math.Pow(2, level - 1)));
+
+        if (Input.GetKeyDown(KeyCode.X))
+            lvlUp();
+    }
+
+    void lvlUp() {
+        experience = (int)(500 * Math.Pow(2, level - 1));
     }
 
     //Types:
@@ -67,11 +74,11 @@ public class Player : MonoBehaviour
 
     public static void getExp(int exp){
         experience += exp;
-        int maxExp = 500 * 2 ^ (level - 1);
+        int maxExp = (int)(500 * Math.Pow(2,level - 1));
         if (experience >= maxExp){
             experience = experience - maxExp;
             level++;
             skillPoints++;
         }
-    }
+    }   
 }
