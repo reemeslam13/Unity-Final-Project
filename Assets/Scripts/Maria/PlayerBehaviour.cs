@@ -63,27 +63,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "enemyHand")
+        if (col.tag == "enemyHand" && !Input.GetKey(KeyCode.LeftControl))
         {
             bool gettingAttacked = col.gameObject.GetComponentInParent<VampireController>().isAttacking && !Input.GetKey(KeyCode.LeftControl);
             if (gettingAttacked)
             {
-                gameObject.GetComponentInChildren<Player>().healthPoints -= col.gameObject.GetComponentInParent<EnemyLogic>().attackDamage;
+                gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
                 MariaController.beingHit = true;
-                Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+                
                 if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
-                {
-                    GetComponentInChildren<Animator>().SetTrigger("die");
-                    dead = true;
-                    GetComponent<Collider>().enabled = false;
-                }
+                    die();
                 else
-                {
-                    GetComponentInChildren<Animator>().SetTrigger("hit");
-                }
+                    hit();
             }
         }
-        else if (col.tag == "weakpoint1" || col.tag == "weakpoint2")
+        else if (col.tag == "weakpoint1" || col.tag == "weakpoint2" && !Input.GetKey(KeyCode.LeftControl))
         {
             bool gettingAttacked = bossAgentBehavior.isAttacking && !Input.GetKey(KeyCode.LeftControl);
             if (gettingAttacked)
@@ -91,17 +85,11 @@ public class PlayerBehaviour : MonoBehaviour
                 GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -5f), ForceMode.Impulse);
                 GetComponentInChildren<Player>().healthPoints -= 30;
                 MariaController.beingHit = true;
-                Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+
                 if (GetComponentInChildren<Player>().healthPoints <= 0)
-                {
-                    GetComponentInChildren<Animator>().SetTrigger("die");
-                    dead = true;
-                    GetComponent<Collider>().enabled = false;
-                }
+                    die();
                 else
-                {
-                    GetComponentInChildren<Animator>().SetTrigger("hit");
-                }
+                    hit();
             }
         }
 
@@ -109,21 +97,33 @@ public class PlayerBehaviour : MonoBehaviour
         {
             gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
             MariaController.beingHit = true;
-            Debug.Log("Maria HP: " + gameObject.GetComponentInChildren<Player>().healthPoints);
+
             if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
-            {
-                GetComponentInChildren<Animator>().SetTrigger("die");
-                dead = true;
-                GetComponent<Collider>().enabled = false;
-            }
+                die();
             else
-            {
-                GetComponentInChildren<Animator>().SetTrigger("hit");
-            }
+                hit();
         }
 
-        if (col.tag == "gate" && Player.wavesCompleted == 3)
+        if (col.tag == "gate" && Player.wavesCompleted == 3){
             SceneManager.LoadScene("BossLevel");
+            PlayerPrefs.SetInt("xp", Player.experience);
+            PlayerPrefs.SetInt("level", Player.level);
+            PlayerPrefs.SetInt("sp", Player.skillPoints);
+            PlayerPrefs.SetInt("rage", Player.rage);
+        }
+    }
+
+    void die(){
+                GetComponentInChildren<Animator>().SetTrigger("die");
+                GetComponentInChildren<MariaAudioController>().playDeath();
+                dead = true;
+                GetComponent<Collider>().enabled = false;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+    }
+
+    void hit(){
+                GetComponentInChildren<Animator>().SetTrigger("hit");
+                GetComponentInChildren<MariaAudioController>().playHit();
     }
 
     void OnCollisionEnter(Collision col)
@@ -132,6 +132,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             col.gameObject.GetComponent<Animator>().SetBool("Collect",true);
             GetComponentInChildren<Player>().refillHealth();
+            GetComponentInChildren<MariaAudioController>().playCollectItem();
         }
         if (col.gameObject.tag == "ground")
             jumps = 2;

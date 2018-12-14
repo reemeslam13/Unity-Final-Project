@@ -39,7 +39,7 @@ public class ErikaController : MonoBehaviour
 
             if (distance <= 20)
             {
-
+                GetComponent<ErikaAudioController>().playDetect();
                 FaceTarget();
                 if (!isFiring)
                 {

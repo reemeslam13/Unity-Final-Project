@@ -47,6 +47,13 @@ public class MainMenuController : MonoBehaviour {
         //enable respective panel
         MainOptionsPanel.SetActive(false);
 
+        //Set Player Prefs
+        PlayerPrefs.SetInt("maxhp", 100);
+        PlayerPrefs.SetInt("xp", 0);
+        PlayerPrefs.SetInt("level", 1);
+        PlayerPrefs.SetInt("sp", 0);
+        PlayerPrefs.SetInt("rage", 0);
+        PlayerPrefs.SetInt("attack", 10);
 
         SceneManager.LoadScene(sceneName); //change it with the scene you want
         

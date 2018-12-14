@@ -4,23 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - sword
-  - enemyHand
+  - wall2
+  - wave3
+  - wave2
+  - gate
+  - wall1
   - ground
-  - arrow
+  - wave1
+  - bora3y
+  - enemyHand
   - erika
-  - Fire
+  - arrow
+  - sword
+  - chest
+  - weakpoint3
   - weakpoint1
   - weakpoint2
-  - weakpoint3
-  - chest
-  - bora3y
-  - wall1
-  - wave1
-  - wall2
-  - wave2
-  - wave3
-  - gate
+  - boss
   layers:
   - Default
   - TransparentFX
@@ -30,7 +30,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 
