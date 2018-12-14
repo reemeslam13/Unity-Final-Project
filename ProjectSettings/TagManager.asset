@@ -21,6 +21,9 @@ TagManager:
   - weakpoint1
   - weakpoint2
   - boss
+  - Rock
+  - Wall
+  - door
   layers:
   - Default
   - TransparentFX

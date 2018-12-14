@@ -93,7 +93,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (col.tag == "arrow" && !Input.GetKey(KeyCode.LeftControl))
+        if ((col.tag == "arrow" || col.tag == "Wall") && !Input.GetKey(KeyCode.LeftControl))
         {
             gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
             MariaController.beingHit = true;
@@ -102,6 +102,16 @@ public class PlayerBehaviour : MonoBehaviour
                 die();
             else
                 hit();
+        } else if(col.tag == "Rock"){
+            gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
+            Destroy(col.gameObject);
+            MariaController.beingHit = true;
+
+            if (gameObject.GetComponentInChildren<Player>().healthPoints <= 0)
+                die();
+            else
+                hit();
+
         }
 
         if (col.tag == "gate" && Player.wavesCompleted == 3){
