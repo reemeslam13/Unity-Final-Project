@@ -8,13 +8,19 @@ TagManager:
   - enemyHand
   - ground
   - arrow
-  - vampire
   - erika
   - Fire
   - weakpoint1
   - weakpoint2
   - weakpoint3
   - chest
+  - bora3y
+  - wall1
+  - wave1
+  - wall2
+  - wave2
+  - wave3
+  - gate
   layers:
   - Default
   - TransparentFX

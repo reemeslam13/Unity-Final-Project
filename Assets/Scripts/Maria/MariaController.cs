@@ -12,6 +12,7 @@ public class MariaController : MonoBehaviour
     public byte HEAVY_ATTACK = 3;
     public byte attackType;
     public Rigidbody rb;
+    public static bool rageActivated = false;
 
     // Use this for initialization
     void Start()
@@ -63,6 +64,7 @@ public class MariaController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && Player.rage >= 100){
             animator.SetTrigger("rage");
             print("RAGE :::: ON");
+            rageActivated = true;
             InvokeRage();
         }
     }
@@ -75,6 +77,7 @@ public class MariaController : MonoBehaviour
     void Rage()
     {
         print("RAGE :::: OFF");
+        rageActivated = false;
         Player.rage = 0;
     }
 }

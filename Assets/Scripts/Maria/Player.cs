@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
     public Text skillPointText;
     public Text levelText;
     public Text expText;
+
+    public static int wavesCompleted;
 
 
     public void Start(){
@@ -49,12 +52,60 @@ public class Player : MonoBehaviour
         skillPointText.text = "SP: " + skillPoints;
         expText.text = "XP: " + experience + "/" + (500 * (Math.Pow(2, level - 1)));
 
-        if (Input.GetKeyDown(KeyCode.X))
+        /* Cheats start   */
+        if (Input.GetKeyDown(KeyCode.L))
             lvlUp();
+
+        if (Input.GetKeyDown(KeyCode.H))
+            healthPoints = maxHealthPoints;
+
+        if (Input.GetKeyDown(KeyCode.K)) 
+            killAllEnemies();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            rage = maxRage;
+
+        //print(wavesCompleted
+
+        /* Cheats end */
+        if (SceneManager.GetActiveScene().buildIndex == 1 && wavesCompleted != 3) {
+            switch (wavesCompleted)
+            {
+                case 0:
+                    if (GameObject.FindGameObjectWithTag("wave1").transform.childCount == 0) {
+						GameObject.FindGameObjectWithTag("wall1").GetComponent<Collider>().enabled = false;
+						wavesCompleted++;
+                    }
+                    break;
+
+                case 1:
+                    if (GameObject.FindGameObjectWithTag("wave2").transform.childCount == 0) {
+						GameObject.FindGameObjectWithTag("wall2").GetComponent<Collider>().enabled = false;
+						wavesCompleted++;
+                    }
+                    break;
+                case 2:
+                    if (GameObject.FindGameObjectWithTag("wave3").transform.childCount == 0) {
+						wavesCompleted++;
+                    }
+					break;
+                default:
+                    break;
+            }
+        }
+
+
+    }
+
+    void killAllEnemies() {
+        new List<GameObject>(GameObject.FindGameObjectsWithTag("erika")).ForEach(obj => Destroy(obj));
+        new List<GameObject>(GameObject.FindGameObjectsWithTag("bora3y")).ForEach(obj => Destroy(obj));
     }
 
     void lvlUp() {
-        experience = (int)(500 * Math.Pow(2, level - 1));
+        experience = 0;
+        level++;
+        skillPoints++;
     }
 
     //Types:
@@ -62,7 +113,7 @@ public class Player : MonoBehaviour
     public void upgradeSkill(int type){
         if(skillPoints > 0){
             skillPoints--;
-            upgrades[level-2] = type;
+            //upgrades[level-2] = type;
             switch(type){
                 case 0: maxHealthPoints = (int)(1.1 * maxHealthPoints); healthPoints = maxHealthPoints; break;
                 case 1: GetComponentInParent<PlayerBehaviour>().movementSpeed *= 1.1f; break;

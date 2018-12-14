@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -104,7 +105,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (col.tag == "arrow")
+        if (col.tag == "arrow" && !Input.GetKey(KeyCode.LeftControl))
         {
             gameObject.GetComponentInChildren<Player>().healthPoints -= 10;
             MariaController.beingHit = true;
@@ -120,6 +121,9 @@ public class PlayerBehaviour : MonoBehaviour
                 GetComponentInChildren<Animator>().SetTrigger("hit");
             }
         }
+
+        if (col.tag == "gate" && Player.wavesCompleted == 3)
+            SceneManager.LoadScene("BossLevel");
     }
 
     void OnCollisionEnter(Collision col)

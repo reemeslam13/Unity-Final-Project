@@ -330,7 +330,7 @@ GameObject:
   m_Layer: 5
   m_Name: BarBackground
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -454,7 +454,7 @@ GameObject:
   m_Layer: 5
   m_Name: UI ProgressBar
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 114239268878071666}
   m_Layer: 0
   m_Name: Bora3y
-  m_TagString: vampire
+  m_TagString: bora3y
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1292,7 +1292,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1372356309557532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 511.07, y: 27.52, z: 522.7923}
+  m_LocalPosition: {x: 491.7, y: 12, z: 874.9}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_Children:
   - {fileID: 4282262211092140}
@@ -2363,6 +2363,7 @@ MonoBehaviour:
   health: 0
   player: {fileID: 0}
   attackDamage: 10
+  hp: {fileID: 114697313834700220}
 --- !u!114 &114282197841509268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2391,7 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10.99
-  player: {fileID: 1986311206903928, guid: 765e794bccd799547a276abf7279823b, type: 2}
+  player: {fileID: 0}
   isAttacking: 0
   enemy: {fileID: 1589643802772850}
   dead: 0

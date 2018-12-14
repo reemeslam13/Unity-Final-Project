@@ -3854,7 +3854,7 @@ MonoBehaviour:
   newGameSceneName: 
   quickSaveSlotID: 6
   MainOptionsPanel: {fileID: 443590089}
-  sceneName: BossLevel
+  sceneName: Forest
   GamePanel: {fileID: 512787264}
   ControlsPanel: {fileID: 264990130}
   GfxPanel: {fileID: 1388274530}

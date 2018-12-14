@@ -29,7 +29,7 @@ public class EnemyLogic : MonoBehaviour
     {
 
         bool hit, dead;
-        if (gameObject.tag == "vampire")
+        if (gameObject.tag == "bora3y")
         {
             hit = GetComponent<VampireController>().hit;
             dead = GetComponent<VampireController>().dead;
@@ -54,6 +54,11 @@ public class EnemyLogic : MonoBehaviour
                 // MariaController.hits[col.gameObject] = 0;
                 Debug.Log("getting hit");
                 int damage = player.GetComponent<Player>().attackDamage * player.GetComponentInChildren<MariaController>().attackType;
+                print("da damage" + damage);
+                if (MariaController.rageActivated)
+                    damage *= 2;
+
+                print("da damage" + damage);
                 health -= damage;
                 print("HP: " + health);
                 Player.rage = (Player.rage > 100) ? 100 : Player.rage + 10;
@@ -61,7 +66,7 @@ public class EnemyLogic : MonoBehaviour
             if (health <= 0)
             {
                 Player.getExp(50);
-                if (gameObject.tag == "vampire")
+                if (gameObject.tag == "bora3y")
                 {
                     GetComponent<VampireController>().dead = true;
                     GetComponentInChildren<Animator>().SetTrigger("death");
